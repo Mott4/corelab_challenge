@@ -12,26 +12,49 @@ dependencies:
   flutter:
     sdk: flutter
 
-# Statement Packages  
-  cupertino_icons: ^1.0.6
+# Statement Packages
+  provider: ^6.1.2
+
+# UI Packages
+  device_preview: ^1.1.0
+
+# Modular Package
   flutter_modular: ^6.3.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
   flutter_lints: ^3.0.0
 
 flutter:
 
   uses-material-design: true
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/icons/
+    - assets/not-found/
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/DMSans/DMSans-VariableFont.ttf
+
+    - family: DMSans-Light
+      fonts:
+        - asset: assets/fonts/DMSans/DMSans-Light.ttf
+
+    - family: DMSans-Regular
+      fonts:
+        - asset: assets/fonts/DMSans/DMSans-Regular.ttf
+
+    - family: DMSans-Medium
+      fonts:
+        - asset: assets/fonts/DMSans/DMSans-Medium.ttf
+          style: normal
+
+    - family: DMSans-Bold
+      fonts:
+        - asset: assets/fonts/DMSans/DMSans-Bold.ttf
+
+
+
