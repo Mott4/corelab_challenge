@@ -14,7 +14,7 @@ class ProductContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: AppColors.whiteColor, border: Border.all(color: AppColors.borderColor)),
+      decoration: BoxDecoration(color: AppColors.whiteColor, border: Border.all(color: AppColors.borderColor, width: 0.5)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(

@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/constants/app_routes.dart';
 import 'view/category_view.dart';
 
 class CategoriesModule extends Module {
@@ -12,6 +12,9 @@ class CategoriesModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.category, child: (context) => const CategoryView());
+    r.child(
+      '/',
+      child: (context) => CategoryView(controller: Provider.of(context, listen: false)),
+    );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'app_colors.dart';
 
 abstract class AppTextStyle {
-  // Item TextStyles ===========================================================
+  // Product TextStyles ========================================================
   static const TextStyle promotionTextStyle = TextStyle(
     color: AppColors.whiteColor,
     fontSize: 12,
@@ -39,5 +39,19 @@ abstract class AppTextStyle {
     color: AppColors.greyColor,
     fontSize: 12,
     fontFamily: 'DMSans-Medium',
+  );
+
+  // Product TextStyles ========================================================
+  static const TextStyle categoryTitle = TextStyle(
+    color: AppColors.appBarColor,
+    fontSize: 20,
+    fontFamily: 'DMSans-Regular',
+  );
+
+  // NavBar Menu ===============================================================
+  static const TextStyle inferiorMenuTitle = TextStyle(
+    color: AppColors.appBarColor,
+    fontSize: 10,
+    fontFamily: 'DMSans-Regular',
   );
 }

@@ -1,4 +1,3 @@
-import 'package:corelab_challenge/core/constants/app_routes.dart';
 import 'package:corelab_challenge/modules/dashboard/view/dashboard_view.dart';
 import 'package:corelab_challenge/modules/dashboard/view_model/dashboard_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -22,6 +21,9 @@ class DashboardModule extends Module {
   // método onde gerencia as rotas desse Módulo
   @override
   void routes(RouteManager r) {
-    r.child(AppRoutes.initial, child: (context) => DashBoardView(controller: Provider.of(context, listen: false)));
+    r.child(
+      '/',
+      child: (context) => DashBoardView(controller: Provider.of(context, listen: false)),
+    );
   }
 }
