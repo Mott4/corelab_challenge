@@ -22,7 +22,10 @@ class CategoryView extends StatelessWidget {
             elevation: 0,
             surfaceTintColor: Colors.transparent,
             backgroundColor: AppColors.backgroundColor,
-            title: Text('Categorias', style: AppTextStyle.priceTextStyle.copyWith(fontSize: 24)),
+            title: Text(
+              'Categorias',
+              style: AppTextStyle.priceTextStyle.copyWith(fontSize: 24),
+            ),
           ),
         ),
         body: Column(
@@ -36,11 +39,16 @@ class CategoryView extends StatelessWidget {
                   return Container(
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
-                      border: Border.all(color: AppColors.borderColor, width: 0.5),
+                      border: Border.all(
+                        color: AppColors.borderColor,
+                        width: 0.5,
+                      ),
                     ),
                     child: ListTile(
-                      onTap: () {},
-                      title: Text(controller.categories[i].categoryName, style: AppTextStyle.categoryTitle),
+                      title: Text(
+                        controller.categories[i].categoryName,
+                        style: AppTextStyle.categoryTitle,
+                      ),
                     ),
                   );
                 },

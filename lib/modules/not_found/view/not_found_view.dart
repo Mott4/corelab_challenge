@@ -1,16 +1,19 @@
+import 'package:corelab_challenge/modules/shared/app_colors.dart';
+import 'package:corelab_challenge/modules/shared/pages/widgets/navbar_menu.dart';
 import 'package:flutter/material.dart';
 
-/* Módulo Coringa ==============================================================
-  Rota que será chamada sempre que passar uma rota que não existe
-    - Não lança um erro, mas joga para uma tela que informa ao usuário sobre um 
-    erro interno. 
- */
+import '../../shared/domain/enums/pages_enum.dart';
+import '../../shared/pages/not_found_message.dart';
 
 class NotFoundView extends StatelessWidget {
   const NotFoundView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(foregroundColor: AppColors.whiteColor),
+      body: const Center(child: NotFoundMessage()),
+      bottomNavigationBar: const NavBarMenu(page: Pages.none),
+    );
   }
 }

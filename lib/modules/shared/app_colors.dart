@@ -9,5 +9,6 @@ abstract class AppColors {
 
   static const Color shadowColor = Color(0x2694A6A9);
 
+  static const Color deepSpaceSparkle = Color(0xFF4A6569);
   static const Color titleColor = Color(0xFF002429);
 }

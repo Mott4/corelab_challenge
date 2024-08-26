@@ -41,17 +41,31 @@ abstract class AppTextStyle {
     fontFamily: 'DMSans-Medium',
   );
 
-  // Product TextStyles ========================================================
+  // Categories TextStyles =====================================================
   static const TextStyle categoryTitle = TextStyle(
     color: AppColors.appBarColor,
     fontSize: 20,
     fontFamily: 'DMSans-Regular',
   );
 
-  // NavBar Menu ===============================================================
+  // NavBar Menu TextStyles ====================================================
   static const TextStyle inferiorMenuTitle = TextStyle(
     color: AppColors.appBarColor,
     fontSize: 10,
     fontFamily: 'DMSans-Regular',
+  );
+
+  // Not Found TextStyles ======================================================
+
+  static const TextStyle notFoundTitle = TextStyle(
+    fontFamily: 'DmSans-Bold',
+    fontSize: 18,
+    color: AppColors.titleColor,
+  );
+
+  static const TextStyle notFoundSubtitle = TextStyle(
+    fontFamily: 'DmSans-Regular',
+    fontSize: 14,
+    color: AppColors.deepSpaceSparkle,
   );
 }
