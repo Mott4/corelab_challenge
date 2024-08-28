@@ -3,19 +3,19 @@ class ProductModel {
   final String title;
   final double price;
   final double? oldPrice;
-  final int? promotionPercentage;
-  final String itemDescription;
-  final String itemState;
-  final String itemCategory;
+  final int? discount;
+  final String parcelsInfo;
+  final String productState;
+  final DateTime createdAt;
 
   const ProductModel({
     required this.imagePath,
     required this.title,
     required this.price,
     this.oldPrice,
-    this.promotionPercentage,
-    required this.itemDescription,
-    required this.itemState,
-    required this.itemCategory,
+    this.discount,
+    required this.parcelsInfo,
+    required this.productState,
+    required this.createdAt,
   });
 }

@@ -1,10 +1,11 @@
-import 'package:corelab_challenge/modules/shared/app_text_style.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:corelab_challenge/modules/shared/extensions/convert_to_brl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../shared/pages/app_colors.dart';
+import '../../shared/pages/app_text_style.dart';
 import '../model/product_model.dart';
-import '../../shared/app_colors.dart';
 
 class ProductContainer extends StatelessWidget {
   final ProductModel item;
@@ -14,7 +15,12 @@ class ProductContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: AppColors.whiteColor, border: Border.all(color: AppColors.borderColor, width: 0.5)),
+      decoration: const BoxDecoration(
+        color: AppColors.whiteColor,
+        border: Border(
+          bottom: BorderSide(color: AppColors.borderColor, width: 1.8),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
@@ -27,7 +33,7 @@ class ProductContainer extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.height / 6,
-                      child: Image.asset('assets/not-found/not_found.png'),
+                      child: CachedNetworkImage(imageUrl: item.imagePath),
                     ),
                   ],
                 ),
@@ -37,7 +43,7 @@ class ProductContainer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (item.promotionPercentage != null)
+                        if (item.discount != null)
                           Container(
                             padding: const EdgeInsets.all(4),
                             decoration: const BoxDecoration(
@@ -45,7 +51,7 @@ class ProductContainer extends StatelessWidget {
                               color: AppColors.appBarColor,
                             ),
                             child: Text(
-                              '${item.promotionPercentage.toString()}% OFF',
+                              '${item.discount}% OFF',
                               style: AppTextStyle.promotionTextStyle,
                             ),
                           ),
@@ -57,7 +63,7 @@ class ProductContainer extends StatelessWidget {
                           style: AppTextStyle.titleTextStyle,
                         ),
                         const SizedBox(height: 6),
-                        if (item.promotionPercentage != null)
+                        if (item.discount != null)
                           Text(
                             item.oldPrice!.convertToBRL(),
                             style: AppTextStyle.oldPriceTextStyle,
@@ -67,12 +73,12 @@ class ProductContainer extends StatelessWidget {
                           style: AppTextStyle.priceTextStyle,
                         ),
                         Text(
-                          item.itemDescription,
+                          item.parcelsInfo,
                           style: AppTextStyle.descriptionTextStyle,
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          item.itemState.toUpperCase(),
+                          item.productState.toUpperCase(),
                           style: AppTextStyle.itemStateTextStyle,
                         ),
                       ],
