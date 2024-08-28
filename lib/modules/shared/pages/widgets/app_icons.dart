@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../app_colors.dart';
+import '../app_colors.dart';
 import 'app_icon_data.dart';
 
 class AppIcons extends StatelessWidget {
@@ -11,7 +12,7 @@ class AppIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
+    return SvgPicture.asset(
       icon.toString(),
       color: color ?? AppColors.appBarColor,
       height: size,
