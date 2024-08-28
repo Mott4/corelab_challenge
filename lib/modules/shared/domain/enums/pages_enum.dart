@@ -1,4 +1,4 @@
-import 'package:corelab_challenge/core/constants/app_routes.dart';
+import 'package:corelab_challenge/core/consts/app_routes.dart';
 
 import '../../pages/widgets/app_icon_data.dart';
 
