@@ -15,7 +15,7 @@ class DashBoardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final allItems = controller.organizeItemsByDate();
+    final allProducts = controller.organizeProductsByDate();
 
     return SafeArea(
       child: Scaffold(
@@ -23,7 +23,7 @@ class DashBoardView extends StatelessWidget {
         appBar: CustomAppBar(showSearchField: true, onSearchTap: () {}),
         body: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: allItems.length,
+          itemCount: allProducts.length,
           itemBuilder: (ctx, i) {
             if (i == 0) {
               return const Padding(
@@ -39,7 +39,7 @@ class DashBoardView extends StatelessWidget {
               );
             }
 
-            final item = allItems[i - 1];
+            final item = allProducts[i - 1];
             if (item is String) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),

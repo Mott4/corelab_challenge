@@ -9,7 +9,9 @@ class DashboardViewModel extends ChangeNotifier {
   List<ProductModel> products = mockProducts;
   final List<dynamic> allProducts = [];
 
-  List<dynamic> organizeItemsByDate() {
+  List<dynamic> organizeProductsByDate() {
+    allProducts.clear();
+
     final today = DateTime.now();
     final yesterday = today.subtract(const Duration(days: 1));
 
