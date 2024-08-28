@@ -3,6 +3,8 @@ import 'package:corelab_challenge/modules/dashboard/widgets/product_container.da
 import 'package:flutter/material.dart';
 
 import '../../shared/app_colors.dart';
+import '../../shared/domain/enums/pages_enum.dart';
+import '../../shared/pages/widgets/navbar_menu.dart';
 
 class DashBoardView extends StatelessWidget {
   final DashboardController controller;
@@ -12,20 +14,20 @@ class DashBoardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: const NavBarMenu(page: Pages.dashboard),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(64),
           child: AppBar(
             backgroundColor: AppColors.appBarColor,
             elevation: 0,
+            surfaceTintColor: Colors.transparent,
             title: Container(
               margin: const EdgeInsets.only(top: 8),
               height: 44,
               decoration: const BoxDecoration(color: AppColors.backgroundColor, borderRadius: BorderRadius.all(Radius.circular(8))),
               child: TextField(
                 showCursor: false,
-                onTap: () {
-                  Navigator.of(context).pushNamed('/search-result');
-                },
+                onTap: () {},
                 decoration: const InputDecoration(
                   hintText: 'Buscar',
                   hintStyle: TextStyle(fontFamily: 'DMSans-Light', color: AppColors.greyColor),
@@ -68,7 +70,7 @@ class DashBoardView extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemBuilder: (c, i) {
+                itemBuilder: (ctx, i) {
                   return ProductContainer(item: controller.items[i]);
                 },
                 itemCount: controller.items.length,
