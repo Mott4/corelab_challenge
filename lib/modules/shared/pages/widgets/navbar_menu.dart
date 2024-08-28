@@ -3,8 +3,8 @@ import 'package:corelab_challenge/modules/shared/pages/widgets/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../app_colors.dart';
-import '../../app_text_style.dart';
+import '../app_colors.dart';
+import '../app_text_style.dart';
 import '../../domain/enums/pages_enum.dart';
 
 class NavBarMenu extends StatelessWidget {
