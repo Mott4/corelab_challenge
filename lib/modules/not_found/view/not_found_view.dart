@@ -1,9 +1,9 @@
-import 'package:corelab_challenge/modules/shared/pages/app_colors.dart';
-import 'package:corelab_challenge/modules/shared/pages/widgets/navbar_menu.dart';
+import 'package:corelab_challenge/modules/shared/ui/theme/app_colors.dart';
+import 'package:corelab_challenge/modules/shared/ui/widgets/navbar_menu.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/domain/enums/pages_enum.dart';
-import '../../shared/pages/not_found_message.dart';
+import '../../shared/enums/pages_enum.dart';
+import '../../shared/ui/widgets/not_found_message.dart';
 
 class NotFoundView extends StatelessWidget {
   const NotFoundView({super.key});
