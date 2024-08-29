@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/state/response_state.dart';
 import '../../shared/model/product_model.dart';
-import '../model/search_model.dart';
 
 class SearchViewModel extends ChangeNotifier {
   final ISearchRepository searchRepository;
