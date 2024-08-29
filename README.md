@@ -1,26 +1,26 @@
 # Corelab_Challenge
 Teste técnico para a posição de Desenvolvedor Mobile Flutter na Corelab.
 
-- Arquitetura
-Optei por utilizar o padrão MVVM devido à sua flexibilidade, estrutura clara e organização de arquivos, o que facilita a separação de responsabilidades entre as camadas do projeto.
+# Arquitetura
+- Optei por utilizar o padrão MVVM devido à sua flexibilidade, estrutura clara e organização de arquivos, o que facilita a separação de responsabilidades entre as camadas do projeto.
 
-- Gerenciamento de Estado
-Estou empregando o Flutter Modular em conjunto com o Change Notifier para o gerenciamento de estado e navegação. Embora o projeto seja pequeno e o uso do Flutter Modular possa parecer excessivo, decidi implementá-lo para demonstrar sua aplicação prática, especialmente em termos de escalabilidade futura.
+# Gerenciamento de Estado
+- Estou empregando o Flutter Modular em conjunto com o Change Notifier para o gerenciamento de estado e navegação. Embora o projeto seja pequeno e o uso do Flutter Modular possa parecer excessivo, decidi implementá-lo para demonstrar sua aplicação prática, especialmente em termos de escalabilidade futura.
 
-- Padrão State
-Segui o padrão State vindo do BloC, para garantir consistência e previsibilidade no controle de estados do aplicativo.
+# Padrão State
+- Segui o padrão State vindo do BloC, para garantir consistência e previsibilidade no controle de estados do aplicativo.
 
-- Padrão Repository
-Implementei o Repository Pattern para simular a conexão com uma API, além de garantir uma estrutura clara e bem definida dos arquivos. Essa abordagem foi combinada com princípios do SOLID, como o Princípio da Responsabilidade Única (SRP) e o Princípio da Inversão de Dependência (DIP), visando um código mais modular e de fácil manutenção.
+# Padrão Repository
+- Implementei o Repository Pattern para simular a conexão com uma API, além de garantir uma estrutura clara e bem definida dos arquivos. Essa abordagem foi combinada com princípios do SOLID, como o Princípio da Responsabilidade Única (SRP) e o Princípio da Inversão de Dependência (DIP), visando um código mais modular e de fácil manutenção.
 
-- Estilos 
-Todos os estilos de cores, textos e algumas imagens estão separados por arquivos que definem bem o que cada um contém. É uma boa forma de organizar e interessante para possíveis manutenções.
+# Estilos 
+- Todos os estilos de cores, textos e algumas imagens estão separados por arquivos que definem bem o que cada um contém. É uma boa forma de organizar e interessante para possíveis manutenções.
 
-- Pacotes Utilizados
-dartz: Utilizado para fornecer construções de programação funcional no Dart.
-shared_preferences: Usado para persistir dados simples de forma local no dispositivo.
-intl: Empregado para a internacionalização e formatação de datas no aplicativo.
-device_preview: Usado para testes de responsividade da aplicação em outros dispositivos.
+# Pacotes Utilizados
+- dartz: Utilizado para fornecer construções de programação funcional no Dart.
+- shared_preferences: Usado para persistir dados simples de forma local no dispositivo.
+- intl: Empregado para a internacionalização e formatação de datas no aplicativo.
+- device_preview: Usado para testes de responsividade da aplicação em outros dispositivos.
 
 # Imagens 
 <img src="https://github.com/user-attachments/assets/4719cf0f-4ddc-42d6-8b46-1b985bee4fd5" alt="Screenshot_1724963070" width="400" />
