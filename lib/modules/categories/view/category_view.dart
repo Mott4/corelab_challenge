@@ -1,12 +1,12 @@
 import 'package:corelab_challenge/core/state/response_state.dart';
-import 'package:corelab_challenge/modules/shared/pages/app_colors.dart';
-import 'package:corelab_challenge/modules/shared/pages/app_text_style.dart';
+import 'package:corelab_challenge/modules/shared/ui/theme/app_colors.dart';
+import 'package:corelab_challenge/modules/shared/ui/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/domain/enums/pages_enum.dart';
-import '../../shared/pages/not_found_message.dart';
-import '../../shared/pages/widgets/custom_app_bar.dart';
-import '../../shared/pages/widgets/navbar_menu.dart';
+import '../../shared/enums/pages_enum.dart';
+import '../../shared/ui/widgets/not_found_message.dart';
+import '../../shared/ui/widgets/custom_app_bar.dart';
+import '../../shared/ui/widgets/navbar_menu.dart';
 import '../model/categories_model.dart';
 import '../view_model/category_view_model.dart';
 
