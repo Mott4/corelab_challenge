@@ -4,4 +4,6 @@ abstract class Consts {
 
 class _LocalDataServiceKeys {
   final String categories = 'keys.categories';
+  final String dashboardProducts = 'keys.dashboardProducts';
+  final String search = 'keys.search';
 }
