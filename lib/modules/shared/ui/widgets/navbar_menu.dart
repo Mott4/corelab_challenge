@@ -1,11 +1,11 @@
-import 'package:corelab_challenge/modules/shared/pages/widgets/app_icon_data.dart';
-import 'package:corelab_challenge/modules/shared/pages/widgets/app_icons.dart';
+import 'package:corelab_challenge/modules/shared/ui/widgets/app_icon_data.dart';
+import 'package:corelab_challenge/modules/shared/ui/widgets/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../app_colors.dart';
-import '../app_text_style.dart';
-import '../../domain/enums/pages_enum.dart';
+import '../../enums/pages_enum.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_text_style.dart';
 
 class NavBarMenu extends StatelessWidget {
   final Pages page;

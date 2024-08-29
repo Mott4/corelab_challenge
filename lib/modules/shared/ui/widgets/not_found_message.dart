@@ -1,7 +1,6 @@
+import 'package:corelab_challenge/modules/shared/ui/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'app_text_style.dart';
 
 class NotFoundTitle extends StatelessWidget {
   final String? searchText;

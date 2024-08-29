@@ -56,7 +56,6 @@ abstract class AppTextStyle {
   );
 
   // Not Found TextStyles ======================================================
-
   static const TextStyle notFoundTitle = TextStyle(
     fontFamily: 'DmSans-Bold',
     fontSize: 18,
@@ -67,5 +66,12 @@ abstract class AppTextStyle {
     fontFamily: 'DmSans-Regular',
     fontSize: 14,
     color: AppColors.deepSpaceSparkle,
+  );
+
+  // Search TextStyles =========================================================
+  static const TextStyle searchHistoricTitle = TextStyle(
+    fontFamily: 'DmSans-Regular',
+    fontSize: 18,
+    color: AppColors.greyColor,
   );
 }

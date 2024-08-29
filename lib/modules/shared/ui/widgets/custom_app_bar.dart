@@ -1,7 +1,6 @@
+import 'package:corelab_challenge/modules/shared/ui/theme/app_colors.dart';
+import 'package:corelab_challenge/modules/shared/ui/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
-
-import '../app_colors.dart';
-import '../app_text_style.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -9,6 +8,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showSearchField;
   final TextEditingController? searchController;
   final VoidCallback? onSearchTap;
+  final FocusNode? focusNode;
+  final Function(String)? onSubmitted;
 
   const CustomAppBar({
     super.key,
@@ -17,6 +18,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showSearchField = false,
     this.searchController,
     this.onSearchTap,
+    this.focusNode,
+    this.onSubmitted,
   });
 
   @override
@@ -25,6 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: showSearchField ? AppColors.appBarColor : AppColors.backgroundColor,
       elevation: 0,
       surfaceTintColor: Colors.transparent,
+      foregroundColor: AppColors.whiteColor,
       title: showSearchField
           ? Container(
               margin: const EdgeInsets.only(top: 8),
@@ -34,15 +38,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               child: TextField(
-                controller: searchController,
-                showCursor: false,
+                onSubmitted: onSubmitted,
                 onTap: onSearchTap,
+                controller: searchController,
+                focusNode: focusNode,
+                showCursor: true,
+                cursorColor: AppColors.greyColor,
+                style: AppTextStyle.titleTextStyle,
                 decoration: const InputDecoration(
                   hintText: 'Buscar',
-                  hintStyle: TextStyle(fontFamily: 'DMSans-Light', color: AppColors.greyColor),
+                  hintStyle: TextStyle(fontFamily: 'DMSans-Medium', color: AppColors.greyColor),
                   suffixIcon: Icon(Icons.search, color: AppColors.appBarColor, size: 24),
-                  border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(vertical: 11, horizontal: 12),
+                  border: InputBorder.none,
                 ),
               ),
             )

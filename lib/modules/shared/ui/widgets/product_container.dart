@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:corelab_challenge/modules/shared/extensions/convert_to_brl.dart';
+import 'package:corelab_challenge/modules/shared/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../shared/pages/app_colors.dart';
-import '../../shared/pages/app_text_style.dart';
-import '../model/product_model.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_text_style.dart';
 
 class ProductContainer extends StatelessWidget {
   final ProductModel item;
