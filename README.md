@@ -8,7 +8,7 @@ Teste técnico para a posição de Desenvolvedor Mobile Flutter na Corelab.
 - Estou empregando o Flutter Modular em conjunto com o Change Notifier para o gerenciamento de estado e navegação. Embora o projeto seja pequeno e o uso do Flutter Modular possa parecer excessivo, decidi implementá-lo para demonstrar sua aplicação prática, especialmente em termos de escalabilidade futura.
 
 # Padrão State
-- Segui o padrão State vindo do BloC, para garantir consistência e previsibilidade no controle de estados do aplicativo.
+- Segui o padrão State, para garantir consistência e previsibilidade no controle de estados do aplicativo.
 
 # Padrão Repository
 - Implementei o Repository Pattern para simular a conexão com uma API, além de garantir uma estrutura clara e bem definida dos arquivos. Essa abordagem foi combinada com princípios do SOLID, como o Princípio da Responsabilidade Única (SRP) e o Princípio da Inversão de Dependência (DIP), visando um código mais modular e de fácil manutenção.
