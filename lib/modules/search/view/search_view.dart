@@ -62,28 +62,28 @@ class _SearchViewState extends State<SearchView> {
             final data = search.data;
 
             if (data is List<ProductModel>) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, top: 24, bottom: 18),
+                    child: Text(
                       '${data.length} resultados encontrados',
                       style: AppTextStyle.titleTextStyle,
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        padding: const EdgeInsets.only(top: 20),
-                        itemCount: data.length,
-                        itemBuilder: (context, index) {
-                          final product = data[index];
-                          return ProductContainer(item: product);
-                        },
-                      ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      padding: const EdgeInsets.only(top: 20),
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        final product = data[index];
+                        return ProductContainer(item: product);
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               );
             } else if (data is List<String>) {
               return Padding(
