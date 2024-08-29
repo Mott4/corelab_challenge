@@ -48,7 +48,7 @@ class _DashBoardViewState extends State<DashBoardView> {
           if (state is LoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ErrorState) {
-            return const NotFoundMessage();
+            return const Center(child: NotFoundMessage());
           } else if (state is SuccessState) {
             final allProducts = widget.controller.organizeProductsByDate();
 

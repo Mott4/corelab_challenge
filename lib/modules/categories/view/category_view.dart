@@ -60,57 +60,55 @@ class _CategoryViewState extends State<CategoryView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: const NavBarMenu(page: Pages.categories),
-        appBar: const CustomAppBar(title: 'Categorias', showSearchField: false),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ValueListenableBuilder(
-                valueListenable: widget.controller.categories,
-                builder: (context, state, child) {
-                  if (state is LoadingState && !_isLoadingMore || state is InitialState && !_isLoadingMore) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (state is ErrorState) {
-                    return const NotFoundMessage();
-                  } else {
-                    final model = state.data as CategoriesModel;
-                    return ListView.builder(
-                      controller: _scrollController,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: model.categories.length + 1,
-                      itemBuilder: (ctx, i) {
-                        if (i < model.categories.length) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.whiteColor,
-                              border: Border.all(color: AppColors.borderColor, width: 0.5),
+    return Scaffold(
+      bottomNavigationBar: const NavBarMenu(page: Pages.categories),
+      appBar: const CustomAppBar(title: 'Categorias', showSearchField: false),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: ValueListenableBuilder(
+              valueListenable: widget.controller.categories,
+              builder: (context, state, child) {
+                if (state is LoadingState && !_isLoadingMore || state is InitialState && !_isLoadingMore) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is ErrorState) {
+                  return const NotFoundMessage();
+                } else {
+                  final model = state.data as CategoriesModel;
+                  return ListView.builder(
+                    controller: _scrollController,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: model.categories.length + 1,
+                    itemBuilder: (ctx, i) {
+                      if (i < model.categories.length) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            border: Border.all(color: AppColors.borderColor, width: 0.5),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              model.categories[i],
+                              style: AppTextStyle.categoryTitle,
                             ),
-                            child: ListTile(
-                              title: Text(
-                                model.categories[i],
-                                style: AppTextStyle.categoryTitle,
-                              ),
-                            ),
-                          );
-                        } else {
-                          return _isLoadingMore
-                              ? const Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Center(child: CircularProgressIndicator()),
-                                )
-                              : const SizedBox.shrink();
-                        }
-                      },
-                    );
-                  }
-                },
-              ),
+                          ),
+                        );
+                      } else {
+                        return _isLoadingMore
+                            ? const Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Center(child: CircularProgressIndicator()),
+                              )
+                            : const SizedBox.shrink();
+                      }
+                    },
+                  );
+                }
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
