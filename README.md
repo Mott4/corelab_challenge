@@ -22,6 +22,10 @@ Teste técnico para a posição de Desenvolvedor Mobile Flutter na Corelab.
 - intl: Empregado para a internacionalização e formatação de datas no aplicativo.
 - device_preview: Usado para testes de responsividade da aplicação em outros dispositivos.
 
+# Módulo de Categorias
+Motivo pelo qual o final do módulo não foi concluído:
+- Precisei passar por uma cirurgia no meio da semana, então por esse motivo não tive tempo de concluir o momento em que pesquisa novas categorias. Ao rolar para baixo, dá um erro de nulo e depois volta ao normal. 
+
 # Imagens 
 <img src="https://github.com/user-attachments/assets/4719cf0f-4ddc-42d6-8b46-1b985bee4fd5" alt="Screenshot_1724963070" width="400" />
 <img src="https://github.com/user-attachments/assets/ce6e9c95-7cf1-4416-8693-9a4bc4b38617" alt="Screenshot_1724963053" width="400" />
