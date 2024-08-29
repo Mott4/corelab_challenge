@@ -12,14 +12,18 @@ dependencies:
   flutter:
     sdk: flutter
 
-# Statement Packages
   provider: ^6.1.2
 
-# UI Packages
-  device_preview: ^1.1.0
-
-# Modular Package
   flutter_modular: ^6.3.4
+  either_dart: ^1.0.0
+  http: ^1.2.2
+  dartz: ^0.10.1
+  shared_preferences: ^2.2.3
+  collection: ^1.18.0
+  flutter_svg: ^2.0.10+1
+  cached_network_image: ^3.4.0
+  intl: ^0.18.0
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:

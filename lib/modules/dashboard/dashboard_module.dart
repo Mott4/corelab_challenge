@@ -1,29 +1,30 @@
+import 'package:corelab_challenge/core/services/repositories/dashboard_repository.dart';
 import 'package:corelab_challenge/modules/dashboard/view/dashboard_view.dart';
-import 'package:corelab_challenge/modules/dashboard/view_model/dashboard_controller.dart';
+import 'package:corelab_challenge/modules/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:provider/provider.dart';
+
+import '../app_module.dart';
 
 class DashboardModule extends Module {
-  // recebe outros Módulos
   @override
-  List<Module> get imports => [];
+  List<Module> get imports => [AppModule()];
 
-  // Exporta controllers etc
-  @override
-  void exportedBinds(Injector i) {}
-
-  // instancia os controllers
-  @override
-  void binds(Injector i) {
-    i.addLazySingleton((context) => DashboardController());
+  void _repository(Injector i) {
+    i.add<IDashboardRepository>(DashboardRepository.new);
   }
 
-  // método onde gerencia as rotas desse Módulo
+  _controller(Injector i) {
+    i.addLazySingleton(DashboardViewModel.new);
+  }
+
+  @override
+  void binds(Injector i) {
+    _controller(i);
+    _repository(i);
+  }
+
   @override
   void routes(RouteManager r) {
-    r.child(
-      '/',
-      child: (context) => DashBoardView(controller: Provider.of(context, listen: false)),
-    );
+    r.child('/', child: (context) => DashBoardView(controller: Modular.get<DashboardViewModel>()));
   }
 }

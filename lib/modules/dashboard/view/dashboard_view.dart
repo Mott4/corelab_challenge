@@ -1,83 +1,120 @@
-import 'package:corelab_challenge/modules/dashboard/view_model/dashboard_controller.dart';
-import 'package:corelab_challenge/modules/dashboard/widgets/product_container.dart';
+import 'package:corelab_challenge/core/consts/app_routes.dart';
+import 'package:corelab_challenge/modules/dashboard/view_model/dashboard_view_model.dart';
+import 'package:corelab_challenge/modules/shared/ui/widgets/product_container.dart';
+import 'package:corelab_challenge/modules/shared/ui/widgets/not_found_message.dart';
+import 'package:corelab_challenge/modules/shared/ui/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 
-import '../../shared/app_colors.dart';
-import '../../shared/domain/enums/pages_enum.dart';
-import '../../shared/pages/widgets/navbar_menu.dart';
+import '../../../core/state/response_state.dart';
+import '../../shared/enums/pages_enum.dart';
+import '../../shared/ui/theme/app_colors.dart';
+import '../../shared/ui/widgets/navbar_menu.dart';
+import '../../shared/model/product_model.dart';
 
-class DashBoardView extends StatelessWidget {
-  final DashboardController controller;
+class DashBoardView extends StatefulWidget {
+  final DashboardViewModel controller;
   const DashBoardView({super.key, required this.controller});
 
   @override
+  State<DashBoardView> createState() => _DashBoardViewState();
+}
+
+class _DashBoardViewState extends State<DashBoardView> {
+  @override
+  void initState() {
+    super.initState();
+    _loadProducts();
+  }
+
+  Future<void> _loadProducts() async {
+    await widget.controller.getProducts();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: const NavBarMenu(page: Pages.dashboard),
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(64),
-          child: AppBar(
-            backgroundColor: AppColors.appBarColor,
-            elevation: 0,
-            surfaceTintColor: Colors.transparent,
-            title: Container(
-              margin: const EdgeInsets.only(top: 8),
-              height: 44,
-              decoration: const BoxDecoration(color: AppColors.backgroundColor, borderRadius: BorderRadius.all(Radius.circular(8))),
-              child: TextField(
-                showCursor: false,
-                onTap: () {},
-                decoration: const InputDecoration(
-                  hintText: 'Buscar',
-                  hintStyle: TextStyle(fontFamily: 'DMSans-Light', color: AppColors.greyColor),
-                  suffixIcon: Icon(Icons.search, color: AppColors.appBarColor, size: 24),
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(vertical: 11, horizontal: 12),
-                ),
-              ),
-            ),
-          ),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Últimos anúncios',
-                    style: TextStyle(
-                      fontFamily: 'DMSans-Bold',
-                      fontSize: 20,
-                      color: AppColors.titleColor,
+    return Scaffold(
+      bottomNavigationBar: const NavBarMenu(page: Pages.dashboard),
+      appBar: CustomAppBar(
+        showSearchField: true,
+        onSearchTap: () {
+          Modular.to.pushNamed(AppRoutes.search);
+        },
+      ),
+      body: ValueListenableBuilder<ResponseState>(
+        valueListenable: widget.controller.products,
+        builder: (context, state, child) {
+          if (state is LoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ErrorState) {
+            return const Center(child: NotFoundMessage());
+          } else if (state is SuccessState) {
+            final allProducts = widget.controller.organizeProductsByDate();
+
+            return ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: allProducts.length + 1,
+              itemBuilder: (ctx, i) {
+                if (i == 0) {
+                  return const Padding(
+                    padding: EdgeInsets.only(left: 20, top: 24),
+                    child: Text(
+                      'Últimos anúncios',
+                      style: TextStyle(
+                        fontFamily: 'DMSans-Bold',
+                        fontSize: 24,
+                        color: AppColors.titleColor,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Hoje',
-                    style: TextStyle(
-                      fontFamily: 'DMSans-Light',
-                      fontSize: 14,
-                      color: AppColors.greyColor,
+                  );
+                }
+
+                final item = allProducts[i - 1];
+                if (item is String) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontFamily: 'DMSans-Medium',
+                        fontSize: 18,
+                        color: AppColors.greyColor,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (ctx, i) {
-                  return ProductContainer(item: controller.items[i]);
-                },
-                itemCount: controller.items.length,
-              ),
-            ),
-          ],
-        ),
+                  );
+                }
+
+                final product = item as ProductModel;
+                String? formattedDate;
+
+                if (product.createdAt.isBefore(DateTime.now().subtract(const Duration(days: 2)))) {
+                  formattedDate = DateFormat('dd/MM/yyyy').format(product.createdAt);
+                }
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (formattedDate != null)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        child: Text(
+                          formattedDate,
+                          style: const TextStyle(
+                            fontFamily: 'DMSans-Medium',
+                            fontSize: 16,
+                            color: AppColors.greyColor,
+                          ),
+                        ),
+                      ),
+                    ProductContainer(item: product),
+                  ],
+                );
+              },
+            );
+          }
+          return const SizedBox.shrink();
+        },
       ),
     );
   }

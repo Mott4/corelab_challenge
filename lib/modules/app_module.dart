@@ -1,11 +1,21 @@
-import 'package:corelab_challenge/core/constants/app_routes.dart';
 import 'package:corelab_challenge/modules/categories/categories_module.dart';
 import 'package:corelab_challenge/modules/dashboard/dashboard_module.dart';
 import 'package:corelab_challenge/modules/not_found/view/not_found_view.dart';
 import 'package:corelab_challenge/modules/search/search_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../core/consts/app_routes.dart';
+import '../core/services/local_service.dart';
+
 class AppModule extends Module {
+  @override
+  void exportedBinds(Injector i) {
+    i.add<ILocalDataService>(LocalDataService.new);
+  }
+
+  @override
+  void binds(Injector i) {}
+
   @override
   void routes(RouteManager r) {
     r.module(
